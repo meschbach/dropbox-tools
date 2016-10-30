@@ -17,7 +17,7 @@ config_file_name = args.config
 file_name = args.local
 remote_file = args.dropbox
 
-with open( config_file_name, 'rb' ) as config_file:
+with open( config_file_name, 'r' ) as config_file:
     config = json.load( config_file )
 
 client = dropbox.Dropbox(config["dropbox"]["token"])
