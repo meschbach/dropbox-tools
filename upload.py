@@ -6,13 +6,17 @@ from dropbox.exceptions import ApiError, AuthError
 
 import json
 
-if len(sys.argv) < 4:
-    print( "usage: "+str( sys.argv[0] )+" config-file local-file remote-name" )
-    sys.exit(-1)
+import argparse
+parser = argparse.ArgumentParser( description="Uploads a file to dropbox" )
+parser.add_argument( 'config', nargs='?', default= None, help= 'Client configuration file' )
+parser.add_argument( 'local', nargs='?', default= None, help= 'Local file to store download to' )
+parser.add_argument( 'dropbox', nargs='?', default= None, help= 'Dropbox file to retreive' )
 
-config_file_name = sys.argv[1]
-file_name = sys.argv[2]
-target_file = sys.argv[3]
+args = parser.parse_args()
+
+config_file_name = args.config
+file_name = args.local
+target_file = args.dropbox
 
 with open( config_file_name, 'rb' ) as config_file:
     config = json.load( config_file )

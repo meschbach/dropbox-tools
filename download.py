@@ -3,14 +3,10 @@ import dropbox
 
 from dropbox.files import WriteMode
 from dropbox.exceptions import ApiError, AuthError
-import argparse
 
 import json
 
-if len(sys.argv) < 4:
-    print( "usage: "+str( sys.argv[0] )+" config-file local-file remote-name" )
-    sys.exit(-1)
-
+import argparse
 parser = argparse.ArgumentParser(description="Download file from dropbox")
 parser.add_argument( 'config', nargs='?', default= None, help= 'Client configuration file' )
 parser.add_argument( 'local', nargs='?', default= None, help= 'Local file to store download to' )
